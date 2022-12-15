@@ -16,10 +16,26 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 public class JFGameTst1 extends JFrame {
+
+	private int Jogador2 = 0;
+	public int getJogador2() {
+		return Jogador2;
+	}
+
+	public void setJogador2(int jogador2) {
+		Jogador2 = jogador2;
+	}
 	/**/
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	int Jogador1, Jogador2;
+	public int Jogador1;
+	public int getJogador1() {
+		return Jogador1;
+	}
+
+	public void setJogador1(int jogador1) {
+		Jogador1 = jogador1;
+	}
 	JButton btnPedra;
 	JButton btnPapel;
 	JButton btnTesoura;
@@ -52,7 +68,7 @@ public class JFGameTst1 extends JFrame {
 		});
 	}
 	
-	public JFGameTst1() {
+	public JFGameTst1(int pipi) {
 		setResizable(false);
 		setIconImage(
 				Toolkit.getDefaultToolkit().getImage("C:\\Users\\sackr\\OneDrive\\Documentos\\redes\\sheldonj2.png"));
@@ -248,7 +264,7 @@ public class JFGameTst1 extends JFrame {
 		contentPane.add(lblJogador2V);
 	}
 	
-	// Métodos switch para escolha do jogador
+	// Mï¿½todos switch para escolha do jogador
 	
 	private void jogo() {
 		switch (Jogador1) {
@@ -277,7 +293,7 @@ public class JFGameTst1 extends JFrame {
 	}
 
 	private void jogo2() {
-		int Jogador2 = (int) (Math.random() * 5 + 1);
+		
 		switch (Jogador2) {
 		case 1:
 			System.out.println("Pedra!");
@@ -301,7 +317,7 @@ public class JFGameTst1 extends JFrame {
 			break;
 		}
 		
-		// Lógica do jogo
+		// Lï¿½gica do jogo
 		
 		if (Jogador1 == Jogador2) {
 			System.out.println(" ");
@@ -320,4 +336,16 @@ public class JFGameTst1 extends JFrame {
 			}
 		}
 	}
+	private static JFGameTst1 instancia;
+
+    private JFGameTst1() {
+
+    }
+
+    public static synchronized JFGameTst1 getInstance() {
+        if (instancia == null) {
+            instancia = new JFGameTst1();
+        }
+        return instancia;
+    }
 }
